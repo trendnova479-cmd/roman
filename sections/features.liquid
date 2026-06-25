@@ -1,0 +1,31 @@
+<section class="features container" aria-labelledby="features-title">
+  <h2 id="features-title">{{ section.settings.title }}</h2>
+  <div class="features-grid">
+    {% for block in section.blocks %}
+      <div class="feature-item">
+        {% if block.settings.icon != blank %}
+          <img src="{{ block.settings.icon | asset_url }}" alt="">
+        {% endif %}
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Features",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Por qué elegirnos" }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Feature", "settings": [
+      { "type": "image_picker", "id": "icon", "label": "Icono" },
+      { "type": "text", "id": "title", "label": "Título", "default": "Envío rápido" },
+      { "type": "textarea", "id": "text", "label": "Texto", "default": "Producción y envío en 3-7 días laborales." }
+    ] }
+  ],
+  "presets": [{ "name": "Features", "blocks": [ { "type": "feature" }, { "type": "feature" }, { "type": "feature" } ] }]
+}
+{% endschema %}

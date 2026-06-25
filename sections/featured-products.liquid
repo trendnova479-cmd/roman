@@ -1,0 +1,34 @@
+<div class="featured-products container" id="productos" aria-labelledby="featured-title">
+  <h2 id="featured-title">{{ section.settings.title }}</h2>
+  <div class="products-grid">
+    {% assign collection = collections[section.settings.collection] %}
+    {% if collection and collection.products_count > 0 %}
+      {% for product in collection.products limit: section.settings.limit %}
+        <article class="product-card">
+          <a href="{{ product.url }}">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | img_url: 'medium' }}" alt="{{ product.title }}">
+            {% else %}
+              <img src="{{ 'placeholder_product.svg' | asset_url }}" alt="{{ product.title }}">
+            {% endif %}
+            <h3>{{ product.title }}</h3>
+            <span class="price">{{ product.price | money }}</span>
+          </a>
+        </article>
+      {% endfor %}
+    {% else %}
+      <p>No hay productos en la colección seleccionada.</p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured products",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Colección" },
+    { "type": "number", "id": "limit", "label": "Número de productos", "default": 4 }
+  ],
+  "presets": [{ "name": "Featured products" }]
+}
+{% endschema %}

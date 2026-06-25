@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Theme settings",
+    "settings": [
+      { "type": "text", "id": "logo_text", "label": "Texto del logo", "default": "Mi Tienda" },
+      { "type": "color", "id": "accent_color", "label": "Color principal", "default": "#0d6efd" }
+    ]
+  }
+]
