@@ -1,0 +1,21 @@
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="hero-content container">
+    <h1 id="hero-title">{{ section.settings.title }}</h1>
+    <p>{{ section.settings.subtitle }}</p>
+    <a href="#productos" class="btn btn-primary">{{ section.settings.cta_text }}</a>
+    <a href="#nosotros" class="btn btn-secondary">{{ section.settings.cta_secondary }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "title", "label": "Título", "default": "Ropa Única, Hecha Para Ti" },
+    { "type": "text", "id": "subtitle", "label": "Subtítulo", "default": "Diseños exclusivos impresos bajo demanda. Calidad premium, envío mundial y producción sostenible." },
+    { "type": "text", "id": "cta_text", "label": "Texto botón principal", "default": "Ver Colección" },
+    { "type": "text", "id": "cta_secondary", "label": "Texto botón secundario", "default": "Conocer Más" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}
